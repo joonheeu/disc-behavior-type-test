@@ -7,7 +7,7 @@ import { Progress } from "@/components/ui/progress"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { HelpCircle } from "lucide-react"
-import discTestData from "@/data/disc-test-data"
+import discTestData, { Option } from "@/data/disc-test-data"
 
 export default function DiscTestPage() {
   const router = useRouter()
@@ -45,7 +45,7 @@ export default function DiscTestPage() {
   const progress = ((currentQuestionIndex + 1) / discTestData.length) * 100
 
   // 배열을 무작위로 섞는 함수
-  const shuffleArray = (array: any[]) => {
+  const shuffleArray = (array: Option[]) => {
     return array.sort(() => Math.random() - 0.5)
   }
 
