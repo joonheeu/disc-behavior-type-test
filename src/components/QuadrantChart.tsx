@@ -108,6 +108,10 @@ export function QuadrantChart({
         ticks: {
           display: false,
         },
+        afterFit: (scale) => {
+          scale.paddingRight = 50
+          scale.paddingLeft = 50
+        },
       },
       y: {
         min: -12,
@@ -118,6 +122,10 @@ export function QuadrantChart({
         },
         ticks: {
           display: false,
+        },
+        afterFit: (scale) => {
+          scale.paddingTop = 50
+          scale.paddingBottom = 50
         },
       },
     },
@@ -158,6 +166,8 @@ export function QuadrantChart({
       const { left, right, top, bottom } = chartArea
       const centerX = (left + right) / 2
       const centerY = (top + bottom) / 2
+      const width = right - left
+      const height = bottom - top
 
       // 축 그리기
       ctx.save()
@@ -171,23 +181,25 @@ export function QuadrantChart({
       ctx.stroke()
 
       // 사분면 라벨 그리기
-      ctx.font = "bold 16px Arial"
-      ctx.fillStyle = "rgba(128, 128, 128, 0.8)"
+      ctx.font = "bold 24px Arial"
+      ctx.fillStyle = "rgba(128, 128, 128, 0.3)"
       ctx.textAlign = "center"
       ctx.textBaseline = "middle"
 
-      const offset = Math.min((right - left) * 0.15, 30)
-      ctx.fillText("I", centerX + offset, centerY - offset)
-      ctx.fillText("D", centerX - offset, centerY - offset)
-      ctx.fillText("C", centerX - offset, centerY + offset)
-      ctx.fillText("S", centerX + offset, centerY + offset)
+      const offsetX = width * 0.35
+      const offsetY = height * 0.35
+
+      ctx.fillText("I", centerX + offsetX, centerY - offsetY)
+      ctx.fillText("D", centerX - offsetX, centerY - offsetY)
+      ctx.fillText("C", centerX - offsetX, centerY + offsetY)
+      ctx.fillText("S", centerX + offsetX, centerY + offsetY)
 
       ctx.restore()
     },
   }
 
   return (
-    <div className="w-full">
+    <div className="p-4 w-full">
       <Scatter
         data={chartData}
         options={chartOptions}
