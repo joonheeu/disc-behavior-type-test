@@ -37,7 +37,9 @@ const Questionnaire: React.FC<QuestionnaireProps> = ({ onComplete }) => {
   return (
     <div className="mx-auto my-8 max-w-xl">
       <Progress value={progress} className="mb-4" />
-      <h2 className="mb-6 font-semibold text-xl">{currentQuestion.question}</h2>
+      <h2 className="mb-6 font-semibold text-xl">
+        자신에게 맞는 단어를 선택해주세요.
+      </h2>
       <div className="space-y-4">
         {currentQuestion.options.map((option, index) => (
           <Button

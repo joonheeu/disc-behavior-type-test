@@ -81,7 +81,7 @@ export const discResultData: Record<"D" | "I" | "S" | "C", DiscResult> = {
     workStyle: {
       title: "업무 스타일",
       points: [
-        "관계 중심적 업��� 처리",
+        "관계 중심적 업무 처리",
         "창의적인 아이디어 제시",
         "유연한 업무 대처",
         "팀 분위기 향상",

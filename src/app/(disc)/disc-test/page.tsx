@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { motion, AnimatePresence } from "framer-motion"
 import { useRouter } from "next/navigation"
-import { ChevronRight, HelpCircle } from "lucide-react"
+import { HelpCircle } from "lucide-react"
 import discTestData from "@/data/disc-test-data"
 
 export default function DiscTestPage() {
@@ -66,20 +66,19 @@ export default function DiscTestPage() {
           transition={{ duration: 0.3 }}
         >
           <Card className="p-6">
-            <h2 className="mb-6 text-xl">
-              {discTestData[currentQuestionIndex].question}
+            <h2 className="mb-6 text-center text-xl">
+              가장 마음에 드는 단어를 선택하세요
             </h2>
-            <div className="space-y-4">
+            <div className="gap-4 grid grid-cols-2">
               {discTestData[currentQuestionIndex].options.map(
                 (option, index) => (
                   <Button
                     key={index}
                     variant="outline"
-                    className="justify-between px-6 py-4 w-full h-auto text-left"
+                    className="py-4 h-auto"
                     onClick={() => handleAnswer(option.trait)}
                   >
-                    <span>{option.text}</span>
-                    <ChevronRight className="w-5 h-5" />
+                    {option.text}
                   </Button>
                 )
               )}
