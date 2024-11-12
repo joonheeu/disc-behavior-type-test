@@ -44,6 +44,11 @@ export default function DiscTestPage() {
 
   const progress = ((currentQuestionIndex + 1) / discTestData.length) * 100
 
+  // 배열을 무작위로 섞는 함수
+  const shuffleArray = (array: any[]) => {
+    return array.sort(() => Math.random() - 0.5)
+  }
+
   return (
     <div className="mx-auto max-w-2xl">
       <div className="mb-8">
@@ -70,7 +75,7 @@ export default function DiscTestPage() {
               가장 마음에 드는 단어를 선택하세요
             </h2>
             <div className="gap-4 grid grid-cols-2">
-              {discTestData[currentQuestionIndex].options.map(
+              {shuffleArray(discTestData[currentQuestionIndex].options).map(
                 (option, index) => (
                   <Button
                     key={index}
